@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "hatsune-miku-cyan",
+  "name": "Hatsune Miku Clear Future",
+  "brandSubtitle": "CODEX DREAM SKIN",
+  "tagline": "A clear signal from the future, tuned for focus.",
+  "projectPrefix": "选择项目 · ",
+  "projectLabel": "◉  选择项目",
+  "statusText": "SIGNAL ONLINE",
+  "quote": "TUNE YOUR FOCUS",
+  "image": "background.png",
+  "sidebarImage": "sidebar-pattern.png",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.78,
+    "focusY": 0.46,
+    "safeArea": "left",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#07131F",
+    "panel": "#0C2231",
+    "panelAlt": "#123142",
+    "accent": "#55E7D0",
+    "accentAlt": "#8BF7E9",
+    "secondary": "#4B8FB1",
+    "highlight": "#E88BD5",
+    "text": "#E8FBFA",
+    "muted": "#9BB8BE",
+    "line": "rgba(85, 231, 208, .28)"
+  }
+}

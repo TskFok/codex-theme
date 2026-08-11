@@ -39,7 +39,9 @@ function zipNames(filePath) {
 }
 
 function zipMember(filePath, member) {
-  return execFileSync("/usr/bin/unzip", ["-p", filePath, member]);
+  return execFileSync("/usr/bin/unzip", ["-p", filePath, member], {
+    maxBuffer: 16 * 1024 * 1024,
+  });
 }
 
 test("初音未来主题元数据符合固定契约", () => {
