@@ -52,6 +52,24 @@ assert_directory_not_link() {
   [[ -d "$path" ]] || fail "$label 不存在或不是目录：$path"
 }
 
+assert_engine_path_components_safe() {
+  local remainder="${ENGINE_DIR#/}"
+  local current=""
+  local component
+
+  while [[ -n "$remainder" ]]; do
+    component="${remainder%%/*}"
+    if [[ "$remainder" == */* ]]; then
+      remainder="${remainder#*/}"
+    else
+      remainder=""
+    fi
+    current="$current/$component"
+    [[ ! -L "$current" ]] || fail "引擎目录路径段不能是软链接：$current"
+    [[ -d "$current" ]] || fail "引擎目录路径段不存在或不是目录：$current"
+  done
+}
+
 assert_regular_not_link() {
   local path="$1"
   local label="$2"
@@ -100,6 +118,7 @@ while (( $# > 0 )); do
 done
 
 [[ "$ENGINE_DIR" = /* ]] || fail "--engine-dir 必须是绝对路径：$ENGINE_DIR"
+assert_engine_path_components_safe
 assert_directory_not_link "$ENGINE_DIR" "引擎目录"
 assert_regular_not_link "$THEME_ZIP" "仓库主题 ZIP"
 

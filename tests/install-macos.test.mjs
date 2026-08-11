@@ -12,7 +12,6 @@ import {
   unlink,
   writeFile,
 } from "node:fs/promises";
-import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { afterEach, test } from "node:test";
@@ -40,7 +39,7 @@ afterEach(async () => {
 });
 
 async function makeTemporaryDirectory(prefix) {
-  const path = await mkdtemp(join(tmpdir(), prefix));
+  const path = await mkdtemp(join("/private/tmp", prefix));
   temporaryDirectories.push(path);
   return path;
 }
@@ -137,6 +136,30 @@ test("拒绝相对引擎路径、缺失目标文件和软链接目标", async ()
   const linkedResult = await runInstaller(["--engine-dir", linkedEngine, "--dry-run"]);
   assert.notEqual(linkedResult.code, 0);
   assert.match(linkedResult.stderr, /软链接/);
+
+  const parentRoot = await makeTemporaryDirectory("nergigante-parent-");
+  const realParent = join(parentRoot, "real-parent");
+  await mkdir(realParent);
+  const parentLinkedEngine = join(realParent, "engine");
+  const fixtureEngine = await makeFakeEngine();
+  await mkdir(parentLinkedEngine);
+  for (const relativePath of PATCH_FILES) {
+    const target = join(parentLinkedEngine, relativePath);
+    await mkdir(dirname(target), { recursive: true });
+    await writeFile(target, await readFile(join(fixtureEngine, relativePath)));
+  }
+  await writeExecutable(
+    join(parentLinkedEngine, "scripts/import-theme-zip-macos.sh"),
+    await readFile(join(fixtureEngine, "scripts/import-theme-zip-macos.sh"), "utf8"),
+  );
+  await symlink(realParent, join(parentRoot, "linked-parent"));
+  const parentLinkedResult = await runInstaller([
+    "--engine-dir",
+    join(parentRoot, "linked-parent", "engine"),
+    "--dry-run",
+  ]);
+  assert.notEqual(parentLinkedResult.code, 0);
+  assert.match(parentLinkedResult.stderr, /软链接/);
 });
 
 test("帮助与不启用干运行计划说明 --no-apply", async () => {
@@ -188,4 +211,31 @@ test("导入返回的非法 JSON 使安装失败且保留备份", async () => {
   assert.match(result.stderr, /JSON/);
   const backupEntries = await readdir(join(engineDir, ".nergigante-theme-backups"));
   assert.equal(backupEntries.length, 1);
+});
+
+test("导入返回格式正确但非法的 id 或指纹时拒绝安装", async () => {
+  for (const { label, importOutput } of [
+    {
+      label: "非法 id",
+      importOutput: JSON.stringify({
+        id: "invalid id",
+        contentFingerprint: "a".repeat(64),
+      }),
+    },
+    {
+      label: "非 64 位 contentFingerprint",
+      importOutput: JSON.stringify({
+        id: "nergigante-dark-ui",
+        contentFingerprint: "a".repeat(63),
+      }),
+    },
+  ]) {
+    const engineDir = await makeFakeEngine({ importOutput });
+    const result = await runInstaller(["--engine-dir", engineDir, "--no-apply"]);
+
+    assert.notEqual(result.code, 0, label);
+    assert.match(result.stderr, /合法 id\/contentFingerprint/, label);
+    const backupEntries = await readdir(join(engineDir, ".nergigante-theme-backups"));
+    assert.equal(backupEntries.length, 1, label);
+  }
 });
