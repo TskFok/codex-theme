@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "nergigante-dark-ui",
+  "name": "Nergigante Dark UI",
+  "brandSubtitle": "CODEX DREAM SKIN",
+  "tagline": "A quiet obsidian hunt beneath violet spines.",
+  "projectPrefix": "选择项目 · ",
+  "projectLabel": "◉  选择项目",
+  "statusText": "SPIKES ONLINE",
+  "quote": "HUNT WITH FOCUS",
+  "image": "background.png",
+  "sidebarImage": "sidebar-pattern.png",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.78,
+    "focusY": 0.48,
+    "safeArea": "left",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#0B0A0F",
+    "panel": "#15131A",
+    "panelAlt": "#211B24",
+    "accent": "#8B526C",
+    "accentAlt": "#B07891",
+    "secondary": "#4A2433",
+    "highlight": "#B83F55",
+    "text": "#E8E1E5",
+    "muted": "#A99DA6",
+    "line": "rgba(139, 82, 108, .30)"
+  }
+}
