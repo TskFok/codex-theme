@@ -5,13 +5,14 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 
+import { resolveEngineFile } from "./helpers/engine-path.mjs";
+
 const repoRoot = path.resolve(import.meta.dirname, "..");
-const engineRoot = "/Users/ushopal/.codex/codex-dream-skin-studio";
-const validator = path.join(engineRoot, "assets/theme-package-validator.mjs");
 const background = path.join(repoRoot, "assets/nergigante-dream-skin/background.png");
 const sidebarPattern = path.join(repoRoot, "assets/nergigante-dream-skin/sidebar-pattern.png");
 
-test("主题包应安全接受并 staging 侧栏图片资源", () => {
+test("主题包应安全接受并 staging 侧栏图片资源", async () => {
+  const validator = await resolveEngineFile("assets/theme-package-validator.mjs");
   const source = mkdtempSync(path.join(os.tmpdir(), "dream-skin-sidebar-source-"));
   const stage = mkdtempSync(path.join(os.tmpdir(), "dream-skin-sidebar-stage-"));
   writeFileSync(path.join(source, "theme.json"), `${JSON.stringify({
