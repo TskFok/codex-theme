@@ -173,6 +173,21 @@ test("帮助与不启用干运行计划说明 --no-apply", async () => {
   assert.match(dryRunResult.stdout, /--no-apply/);
 });
 
+test("不可执行的导入脚本会在写入补丁和创建备份前拒绝真实安装", async () => {
+  const engineDir = await makeFakeEngine();
+  const importScript = join(engineDir, "scripts/import-theme-zip-macos.sh");
+  const patchTarget = join(engineDir, "assets/dream-skin.css");
+  const originalPatchTarget = await readFile(patchTarget, "utf8");
+  await chmod(importScript, 0o644);
+
+  const result = await runInstaller(["--engine-dir", engineDir, "--no-apply"]);
+
+  assert.notEqual(result.code, 0);
+  assert.match(result.stderr, /导入脚本.*可执行/);
+  assert.equal(await readFile(patchTarget, "utf8"), originalPatchTarget);
+  await assert.rejects(lstat(join(engineDir, ".nergigante-theme-backups")));
+});
+
 test("真实不启用安装备份并仅替换白名单文件", async () => {
   const engineDir = await makeFakeEngine();
   const switchLog = join(engineDir, "switch.log");

@@ -126,7 +126,10 @@ for relative_path in "${PATCH_FILES[@]}"; do
   assert_regular_not_link "$PATCH_ROOT/$relative_path" "补丁源文件"
   assert_engine_file_safe "$relative_path"
 done
+IMPORT_SCRIPT="$ENGINE_DIR/scripts/import-theme-zip-macos.sh"
 assert_engine_file_safe "scripts/import-theme-zip-macos.sh"
+command -v node >/dev/null 2>&1 || fail "未找到 node 命令，无法导入主题"
+[[ -x "$IMPORT_SCRIPT" ]] || fail "导入脚本不可执行：$IMPORT_SCRIPT"
 
 BACKUP_ROOT="$ENGINE_DIR/.nergigante-theme-backups"
 if [[ -e "$BACKUP_ROOT" || -L "$BACKUP_ROOT" ]]; then
@@ -170,7 +173,7 @@ for relative_path in "${PATCH_FILES[@]}"; do
 done
 
 print -- "已备份并写入 10 个白名单补丁文件。"
-if ! import_output="$("$ENGINE_DIR/scripts/import-theme-zip-macos.sh" --file "$THEME_ZIP")"; then
+if ! import_output="$("$IMPORT_SCRIPT" --file "$THEME_ZIP")"; then
   fail "主题导入失败；备份已保留在：$BACKUP_DIR"
 fi
 
