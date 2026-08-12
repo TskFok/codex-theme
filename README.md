@@ -1,6 +1,18 @@
-# 灭尽龙 Codex Dream Skin 主题（macOS）
+# Codex Dream Skin 主题包（macOS）
 
-本仓库提供《怪物猎人》灭尽龙主题素材，以及让侧栏暗纹正常显示所需的 Codex Dream Skin 引擎补丁。安装器只会修改指定的 Dream Skin 引擎目录；不会修改 `/Applications/Codex.app`。
+本仓库提供 5 个可导入的 Codex Dream Skin 主题包，以及让侧栏暗纹正常显示所需的 Dream Skin 引擎补丁。安装器只会修改指定的 Dream Skin 引擎目录；不会修改 `/Applications/Codex.app`。
+
+## 主题包
+
+| 主题包 | 主题名称 | 主题 ID | 主题源目录 |
+| --- | --- | --- | --- |
+| [`Devil-May-Cry-5-Dream-Skin.zip`](Devil-May-Cry-5-Dream-Skin.zip) | Devil May Cry 5 Crimson Requiem | `devil-may-cry-5-crimson` | `assets/devil-may-cry-5-dream-skin/` |
+| [`Final-Fantasy-VII-Remake-Dream-Skin.zip`](Final-Fantasy-VII-Remake-Dream-Skin.zip) | Final Fantasy VII Remake Flowerfield Dusk | `ff7-remake-flowerfield` | `assets/final-fantasy-vii-remake-dream-skin/` |
+| [`Hatsune-Miku-Dream-Skin.zip`](Hatsune-Miku-Dream-Skin.zip) | Hatsune Miku Clear Future | `hatsune-miku-cyan` | `assets/hatsune-miku-dream-skin/` |
+| [`Nergigante-Dream-Skin.zip`](assets/Nergigante-Dream-Skin.zip) | Nergigante Dark UI | `nergigante-dark-ui` | `assets/nergigante-dream-skin/` |
+| [`Resident-Evil-RPD-Dream-Skin.zip`](Resident-Evil-RPD-Dream-Skin.zip) | Resident Evil R.P.D. Night Watch | `resident-evil-rpd` | `assets/resident-evil-dream-skin/` |
+
+`Nergigante-Dream-Skin-Changes.zip` 是包含安装器、引擎补丁和文档的完整离线分发包，不是单独的主题包。
 
 ## 前置条件
 
@@ -9,7 +21,7 @@
 - 系统可使用 `zsh` 与 `node`。
 - 已将本仓库完整下载或克隆到本机；不要单独移动 `install-macos.sh`，它需要同目录的 `assets/` 与 `patches/`。
 
-## 一键安装
+## 一键安装灭尽龙主题
 
 在仓库根目录执行：
 
