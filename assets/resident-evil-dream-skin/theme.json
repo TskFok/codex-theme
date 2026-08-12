@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "resident-evil-rpd",
+  "name": "Resident Evil R.P.D. Night Watch",
+  "brandSubtitle": "R.P.D. SURVIVAL UNIT",
+  "tagline": "Cold streets. Red signals. Keep moving.",
+  "projectPrefix": "选择项目 · ",
+  "projectLabel": "◉  选择项目",
+  "statusText": "R.P.D. SIGNAL ONLINE",
+  "quote": "SURVIVE THE NIGHT",
+  "image": "background.png",
+  "sidebarImage": "sidebar-pattern.png",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.82,
+    "focusY": 0.48,
+    "safeArea": "left",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#090B0F",
+    "panel": "#12171D",
+    "panelAlt": "#1B242B",
+    "accent": "#C4434D",
+    "accentAlt": "#E06B64",
+    "secondary": "#4C6470",
+    "highlight": "#D59A58",
+    "text": "#F0ECE6",
+    "muted": "#A4AFB3",
+    "line": "rgba(196, 67, 77, .30)"
+  }
+}
