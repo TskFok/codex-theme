@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "ff7-remake-flowerfield",
+  "name": "Final Fantasy VII Remake Flowerfield Dusk",
+  "brandSubtitle": "SECTOR 5 FLOWERFIELD",
+  "tagline": "Where the evening light remembers.",
+  "projectPrefix": "选择项目 · ",
+  "projectLabel": "◉  选择项目",
+  "statusText": "FLOWERFIELD SIGNAL ONLINE",
+  "quote": "KEEP WALKING TOWARD THE LIGHT",
+  "image": "background.png",
+  "sidebarImage": "sidebar-pattern.png",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.80,
+    "focusY": 0.48,
+    "safeArea": "left",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#211B2A",
+    "panel": "#2B2232",
+    "panelAlt": "#3C2A3E",
+    "accent": "#D98997",
+    "accentAlt": "#F1B1A8",
+    "secondary": "#6D7B8D",
+    "highlight": "#D7AF63",
+    "text": "#F6EFEA",
+    "muted": "#C2B3B1",
+    "line": "rgba(217, 137, 151, .28)"
+  }
+}
