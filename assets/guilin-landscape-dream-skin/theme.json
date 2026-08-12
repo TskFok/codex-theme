@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "guilin-li-river",
+  "name": "Guilin Li River Morning Mist",
+  "brandSubtitle": "LI RIVER MORNING MIST",
+  "tagline": "Clear water, quiet peaks, steady focus.",
+  "projectPrefix": "选择项目 · ",
+  "projectLabel": "◉  选择项目",
+  "statusText": "LI RIVER SIGNAL ONLINE",
+  "quote": "MOVE WITH THE MIST",
+  "image": "background.png",
+  "sidebarImage": "sidebar-pattern.png",
+  "appearance": "light",
+  "art": {
+    "focusX": 0.8,
+    "focusY": 0.46,
+    "safeArea": "left",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#EEF7F2",
+    "panel": "#FAFDFB",
+    "panelAlt": "#DDEFE7",
+    "accent": "#246D63",
+    "accentAlt": "#3D8979",
+    "secondary": "#4E6F76",
+    "highlight": "#9A6A32",
+    "text": "#173D39",
+    "muted": "#4A6664",
+    "line": "rgba(36, 109, 99, .26)"
+  }
+}
