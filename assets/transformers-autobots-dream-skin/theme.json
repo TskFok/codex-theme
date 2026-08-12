@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "transformers-autobots-cinematic",
+  "name": "Transformers Autobots Cinematic",
+  "brandSubtitle": "AUTOBOT COMMAND NETWORK",
+  "tagline": "Freedom is built from steel and resolve.",
+  "projectPrefix": "选择项目 · ",
+  "projectLabel": "◉  选择项目",
+  "statusText": "AUTOBOT SIGNAL ONLINE",
+  "quote": "ROLL OUT. STAY THE COURSE.",
+  "image": "background.png",
+  "sidebarImage": "sidebar-pattern.png",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.82,
+    "focusY": 0.46,
+    "safeArea": "left",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#080C13",
+    "panel": "#111A25",
+    "panelAlt": "#1D2A38",
+    "accent": "#2E78B7",
+    "accentAlt": "#7CB6E8",
+    "secondary": "#4B6175",
+    "highlight": "#D18A48",
+    "text": "#E9F0F5",
+    "muted": "#9EAFBC",
+    "line": "rgba(46, 120, 183, .30)"
+  }
+}

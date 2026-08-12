@@ -1,6 +1,6 @@
 # Codex Dream Skin 主题包（macOS）
 
-本仓库提供 6 个可导入的 Codex Dream Skin 主题包，以及让侧栏暗纹正常显示所需的 Dream Skin 引擎补丁。安装器只会修改指定的 Dream Skin 引擎目录；不会修改 `/Applications/Codex.app`。
+本仓库提供 7 个可导入的 Codex Dream Skin 主题包，以及让侧栏暗纹正常显示所需的 Dream Skin 引擎补丁。安装器只会修改指定的 Dream Skin 引擎目录；不会修改 `/Applications/Codex.app`。
 
 ## 主题包
 
@@ -12,6 +12,7 @@
 | [`Hatsune-Miku-Dream-Skin.zip`](Hatsune-Miku-Dream-Skin.zip) | Hatsune Miku Clear Future | `hatsune-miku-cyan` | `assets/hatsune-miku-dream-skin/` |
 | [`Nergigante-Dream-Skin.zip`](assets/Nergigante-Dream-Skin.zip) | Nergigante Dark UI | `nergigante-dark-ui` | `assets/nergigante-dream-skin/` |
 | [`Resident-Evil-RPD-Dream-Skin.zip`](Resident-Evil-RPD-Dream-Skin.zip) | Resident Evil R.P.D. Night Watch | `resident-evil-rpd` | `assets/resident-evil-dream-skin/` |
+| [`Transformers-Autobots-Dream-Skin.zip`](Transformers-Autobots-Dream-Skin.zip) | Transformers Autobots Cinematic | `transformers-autobots-cinematic` | `assets/transformers-autobots-dream-skin/` |
 
 `Nergigante-Dream-Skin-Changes.zip` 是包含安装器、引擎补丁和文档的完整离线分发包，不是单独的主题包。
 
