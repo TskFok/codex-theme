@@ -1,0 +1,111 @@
+import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
+import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import test from "node:test";
+
+const repoRoot = path.resolve(import.meta.dirname, "..");
+const themeRoot = path.join(repoRoot, "assets", "resident-evil-dream-skin");
+const zipPath = path.join(repoRoot, "Resident-Evil-RPD-Dream-Skin.zip");
+const validator = path.join(repoRoot, "patches", "engine", "assets", "theme-package-validator.mjs");
+const expectedFiles = ["background.png", "sidebar-pattern.png", "theme.css", "theme.json"];
+const expectedColors = {
+  background: "#090B0F",
+  panel: "#12171D",
+  panelAlt: "#1B242B",
+  accent: "#C4434D",
+  accentAlt: "#E06B64",
+  secondary: "#4C6470",
+  highlight: "#D59A58",
+  text: "#F0ECE6",
+  muted: "#A4AFB3",
+  line: "rgba(196, 67, 77, .30)",
+};
+const expectedCss = `[data-ds-part="root"] {
+  background-color: #090b0f;
+  color: #f0ece6;
+}
+
+[data-ds-part="sidebar"] {
+  background-color: #12171d;
+  border-right-color: #4c6470;
+}
+`;
+
+function readPngDimensions(filePath) {
+  const bytes = readFileSync(filePath);
+  assert.deepEqual([...bytes.subarray(0, 8)], [137, 80, 78, 71, 13, 10, 26, 10]);
+  assert.equal(bytes.toString("ascii", 12, 16), "IHDR");
+  return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+}
+
+function zipNames(filePath) {
+  return execFileSync("/usr/bin/unzip", ["-Z1", filePath], { encoding: "utf8" })
+    .trim()
+    .split(/\r?\n/)
+    .filter(Boolean)
+    .sort();
+}
+
+function zipMember(filePath, member) {
+  return execFileSync("/usr/bin/unzip", ["-p", filePath, member], {
+    maxBuffer: 16 * 1024 * 1024,
+  });
+}
+
+test("生化危机 R.P.D. 主题元数据符合固定契约", () => {
+  const theme = JSON.parse(readFileSync(path.join(themeRoot, "theme.json"), "utf8"));
+  assert.equal(theme.schemaVersion, 1);
+  assert.equal(theme.id, "resident-evil-rpd");
+  assert.equal(theme.name, "Resident Evil R.P.D. Night Watch");
+  assert.equal(theme.image, "background.png");
+  assert.equal(theme.sidebarImage, "sidebar-pattern.png");
+  assert.equal(theme.appearance, "dark");
+  assert.deepEqual(theme.art, {
+    focusX: 0.82,
+    focusY: 0.48,
+    safeArea: "left",
+    taskMode: "ambient",
+  });
+  assert.deepEqual(theme.colors, expectedColors);
+});
+
+test("生化危机 R.P.D. 主题图片尺寸符合 Codex 背景契约", () => {
+  assert.deepEqual(readPngDimensions(path.join(themeRoot, "background.png")), {
+    width: 1920,
+    height: 1080,
+  });
+  assert.deepEqual(readPngDimensions(path.join(themeRoot, "sidebar-pattern.png")), {
+    width: 1024,
+    height: 1024,
+  });
+});
+
+test("生化危机 R.P.D. 主题 CSS 只包含固定安全规则", () => {
+  assert.equal(readFileSync(path.join(themeRoot, "theme.css"), "utf8"), expectedCss);
+});
+
+test("生化危机 R.P.D. 主题源目录通过本地简化主题校验", () => {
+  const stage = mkdtempSync(path.join(os.tmpdir(), "resident-evil-rpd-theme-stage-"));
+  try {
+    const output = execFileSync(process.execPath, [
+      validator,
+      "--source", themeRoot,
+      "--stage", stage,
+      "--platform", "macos",
+      "--client-version", "1.5.12",
+    ], { encoding: "utf8" });
+    assert.match(output, /"format":"simple"/);
+    for (const name of expectedFiles) assert.equal(existsSync(path.join(stage, name)), true);
+  } finally {
+    rmSync(stage, { recursive: true, force: true });
+  }
+});
+
+test("生化危机 R.P.D. 主题 ZIP 只有四个根文件且与源目录一致", () => {
+  assert.deepEqual(zipNames(zipPath), expectedFiles);
+  for (const name of expectedFiles) {
+    assert.deepEqual(zipMember(zipPath, name), readFileSync(path.join(themeRoot, name)));
+  }
+});
