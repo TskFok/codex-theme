@@ -1,6 +1,6 @@
 # Codex Dream Skin 主题包（macOS）
 
-本仓库提供 5 个可导入的 Codex Dream Skin 主题包，以及让侧栏暗纹正常显示所需的 Dream Skin 引擎补丁。安装器只会修改指定的 Dream Skin 引擎目录；不会修改 `/Applications/Codex.app`。
+本仓库提供 6 个可导入的 Codex Dream Skin 主题包，以及让侧栏暗纹正常显示所需的 Dream Skin 引擎补丁。安装器只会修改指定的 Dream Skin 引擎目录；不会修改 `/Applications/Codex.app`。
 
 ## 主题包
 
@@ -8,6 +8,7 @@
 | --- | --- | --- | --- |
 | [`Devil-May-Cry-5-Dream-Skin.zip`](Devil-May-Cry-5-Dream-Skin.zip) | Devil May Cry 5 Crimson Requiem | `devil-may-cry-5-crimson` | `assets/devil-may-cry-5-dream-skin/` |
 | [`Final-Fantasy-VII-Remake-Dream-Skin.zip`](Final-Fantasy-VII-Remake-Dream-Skin.zip) | Final Fantasy VII Remake Flowerfield Dusk | `ff7-remake-flowerfield` | `assets/final-fantasy-vii-remake-dream-skin/` |
+| [`Guilin-Landscape-Dream-Skin.zip`](Guilin-Landscape-Dream-Skin.zip) | Guilin Li River Morning Mist | `guilin-li-river` | `assets/guilin-landscape-dream-skin/` |
 | [`Hatsune-Miku-Dream-Skin.zip`](Hatsune-Miku-Dream-Skin.zip) | Hatsune Miku Clear Future | `hatsune-miku-cyan` | `assets/hatsune-miku-dream-skin/` |
 | [`Nergigante-Dream-Skin.zip`](assets/Nergigante-Dream-Skin.zip) | Nergigante Dark UI | `nergigante-dark-ui` | `assets/nergigante-dream-skin/` |
 | [`Resident-Evil-RPD-Dream-Skin.zip`](Resident-Evil-RPD-Dream-Skin.zip) | Resident Evil R.P.D. Night Watch | `resident-evil-rpd` | `assets/resident-evil-dream-skin/` |
