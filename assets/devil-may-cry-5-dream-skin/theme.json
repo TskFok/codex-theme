@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "devil-may-cry-5-crimson",
+  "name": "Devil May Cry 5 Crimson Requiem",
+  "brandSubtitle": "DEMON HUNTER SIGNAL",
+  "tagline": "Style is the edge between chaos and control.",
+  "projectPrefix": "选择项目 · ",
+  "projectLabel": "◉  选择项目",
+  "statusText": "DEMON HUNTER SIGNAL ONLINE",
+  "quote": "STAY SHARP. KEEP MOVING.",
+  "image": "background.png",
+  "sidebarImage": "sidebar-pattern.png",
+  "appearance": "dark",
+  "art": {
+    "focusX": 0.80,
+    "focusY": 0.48,
+    "safeArea": "left",
+    "taskMode": "ambient"
+  },
+  "colors": {
+    "background": "#0B0D12",
+    "panel": "#151820",
+    "panelAlt": "#24232A",
+    "accent": "#B64558",
+    "accentAlt": "#E38B8D",
+    "secondary": "#596879",
+    "highlight": "#C99763",
+    "text": "#F1ECE7",
+    "muted": "#B0A8A6",
+    "line": "rgba(182, 69, 88, .30)"
+  }
+}

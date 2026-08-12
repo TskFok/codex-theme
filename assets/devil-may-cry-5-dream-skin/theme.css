@@ -1,0 +1,9 @@
+[data-ds-part="root"] {
+  background-color: #0b0d12;
+  color: #f1ece7;
+}
+
+[data-ds-part="sidebar"] {
+  background-color: #151820;
+  border-right-color: #596879;
+}
